@@ -6,8 +6,9 @@ package queuemanager;
 
 /**
  * @author Alanna Zimbehl - 19016467
+ * @param <T>
  */
-public class Node {
+public class Node<T> {
     
     /**
  contains the person and the priority fields/data for person object within the node
