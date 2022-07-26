@@ -13,42 +13,94 @@ package queuemanager;
 public class unOrderedLinkedListPriorityQueue<T> implements PriorityQueue<T>
 {
     private Node<T> head;
-    
+	   
     public unOrderedLinkedListPriorityQueue(){
-        head = null;        
+        head = null;
     }
-    
-    @Override
-    public T head() throws QueueUnderflowException {
-        if(isEmpty()){
-            throw new QueueUnderflowException();
-        }else{
-            return (T) head.getData();            
-        }
-    }
-    
-    @Override
-    public void add(T item, int priority) throws QueueOverflowException {
-        Node previousNode = head;
-        PriorityItem<T> newItem = new PriorityItem(item,priority);       
-        head = new Node(newItem);
-        head.setNext(previousNode);      
-    }
+	   
+	   
+    @Override 
+    public void add(T item, int priority) throws StringIndexOutOfBoundsException{
+	       
+        Node createdNode = new Node(item,priority);
+	Node currentNode = (head);
+	       
+	       Boolean ifInsert = false;
+	       
+	       if(head == null){
+	           head = createdNode;
+	           return;
+	           
+	       } while(currentNode.getNext() != null) {
+	    	   
+	    	   if(currentNode.getNext().getPriority() < createdNode.getPriority()) {		   
+	    		   
+	    		   createdNode.setNext(currentNode.getNext());
+	    		   currentNode.setNext(createdNode);
+	    		   
+	    		   ifInsert = true;
+	    		   
+	    		   break;
+	    		  
+	    	   }
+	    	   
+	    	   currentNode = currentNode.getNext();
+	    	   
+	    	   
+	       }
+	       
+	       if (ifInsert == false) {
+	    	   
+	    	   currentNode.setNext(createdNode);
+	    	   
+	       }
+	      
+	   }
+	   
+	   @Override
+	   public T head() throws QueueUnderflowException {
+	       if(isEmpty()){
+	           throw new QueueUnderflowException();
+	       }else{
+	           return (T) head.getItem();
+	       }
+	   }
+	   
+	   
 
-    @Override
-    public void remove() throws QueueUnderflowException {
-    }
+	   @Override
+	   public void remove() throws QueueUnderflowException {
+	       Node temp = head;
+	       (head) = head.getNext();
+	   }
+	   
 
-    @Override
-    public boolean isEmpty() {
-        return head == null;
-    }
+	   @Override
+	   public boolean isEmpty() {
+	       return this.head == null;
+	   }
 
-    @Override
-    public String toString() {
-        String msg = "";
-        
-        return msg;
-    }
+	   @Override
+	   public String toString() {
+		   
+		   Node currentNode = (head);
+		   String message = "";
+		   
+		   
+		   if(head != null){
+			   
+			   message+= "[( " +head.getItem()+ " , "+head.getPriority()+ " )";
+			   
+			   while(currentNode.getNext() != null) {
+				  
+				   currentNode = currentNode.getNext();
+				   message += "( " +currentNode.getItem()+ " , "+currentNode.getPriority()+ " )";
+			
+			   }
+		   
+		   }
+		  
+	       return message;
+	   }
     
 }
