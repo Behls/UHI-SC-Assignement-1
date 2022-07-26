@@ -5,45 +5,31 @@
 package queuemanager;
 
 /**
- *
+ * @author - Alanna zimbehl - 19016467
  * @param <T>
- * @alanna zimbehl - 19016467
  */
 
-public class Node<T>{
-    
-    /**
- contains the person and the priority fields/data for person object within the node
- */
-    private PriorityItem data;
-//    next field for bridge of next node
-    private Node next;
-    
+public class Node<T> extends PriorityItem<T>{
+   
+   /**
+contains the person and the priority fields/data for person object within the node
+*/
+	
+//   next field for bridge of next node
+   private Node next;
+   
 
+    public Node(T item, int priority){
+    	super(item, priority);
+   }           
 
-     public Node(PriorityItem data){
-         
-        this.data = data;
-    }           
-    
-     public Node(){
-    }
+   public Node getNext() {
+       return next;
+   }
 
-//    setters and getters for node object/ class
-    public PriorityItem getData() {
-        return data;
-    }
-
-    public void setData(PriorityItem data) {
-        this.data = data;
-    }
-
-    public Node getNext() {
-        return next;
-    }
-
-    public void setNext(Node next) {
-        this.next = next;
-    }
-    
+   public void setNext(Node next) {
+       this.next = next;
+   }
+   
 }
+
