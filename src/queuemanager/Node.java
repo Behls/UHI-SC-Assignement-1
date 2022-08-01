@@ -17,7 +17,6 @@ contains the person and the priority fields/data for person object within the no
 	
 //   next field for bridge of next node
    private Node next;
-   
 
     public Node(T item, int priority){
     	super(item, priority);
@@ -30,6 +29,5 @@ contains the person and the priority fields/data for person object within the no
    public void setNext(Node next) {
        this.next = next;
    }
-   
 }
 
