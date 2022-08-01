@@ -5,22 +5,18 @@
 package queuemanager;
 
 /**
- * @author Alanna Zimbehl - 19016467
+ * @author - Alanna zimbehl - 19016467
  * @param <T>
  */
+
 public class Node<T> extends PriorityItem<T>{
-    
-    /**
- contains the person and the priority fields/data for person object within the node
- */
-    
-    /**
+   
+   /**
 contains the person and the priority fields/data for person object within the node
 */
 	
 //   next field for bridge of next node
    private Node next;
-   
 
     public Node(T item, int priority){
     	super(item, priority);
@@ -33,5 +29,5 @@ contains the person and the priority fields/data for person object within the no
    public void setNext(Node next) {
        this.next = next;
    }
-    
 }
+
